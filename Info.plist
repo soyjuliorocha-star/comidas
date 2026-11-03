@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleDevelopmentRegion</key><string>es_MX</string>
+  <key>CFBundleDisplayName</key><string>Comidas</string>
+  <key>CFBundleExecutable</key><string>$(EXECUTABLE_NAME)</string>
+  <key>CFBundleIdentifier</key><string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+  <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+  <key>CFBundleName</key><string>$(PRODUCT_NAME)</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.0</string>
+  <key>CFBundleVersion</key><string>1</string>
+  <key>LSRequiresIPhoneOS</key><true/>
+  <key>LSApplicationCategoryType</key><string>public.app-category.healthcare-fitness</string>
+  <key>UILaunchScreen</key><dict/>
+  <key>UISupportedInterfaceOrientations</key><array><string>UIInterfaceOrientationPortrait</string></array>
+  <key>UIBackgroundModes</key><array><string>processing</string></array>
+  <key>BGTaskSchedulerPermittedIdentifiers</key><array>
+    <string>com.comidaslog.app.gallery</string>
+  </array>
+  <key>NSMotionUsageDescription</key><string>Consultar tu actividad física para ajustar el gasto energético.</string>
+  <key>NSCameraUsageDescription</key><string>Fotografiar tus platos para calcular las calorías.</string>
+  <key>NSPhotoLibraryUsageDescription</key><string>Elegir fotos de tus comidas y respaldar tu galería.</string>
+  <key>NSPhotoLibraryAddUsageDescription</key><string>Guardar las fotos de tus platos en la galería.</string>
+  <key>NSLocalNetworkUsageDescription</key><string>Encontrar tu equipo de respaldo en la red local.</string>
+  <key>NSBonjourServices</key><array><string>_http._tcp</string></array>
+  <key>NSAppTransportSecurity</key><dict>
+    <key>NSAllowsLocalNetworking</key><true/>
+  </dict>
+</dict></plist>
