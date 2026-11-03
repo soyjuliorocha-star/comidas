@@ -5,17 +5,18 @@ on:
 
 jobs:
   build:
-    runs-on: macos-15
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - run: brew install xcodegen
+      - name: XcodeGen 2.38
+        run: |
+          curl -sL -o x.zip https://github.com/yonaskolb/XcodeGen/releases/download/2.38.0/xcodegen.zip
+          unzip -q x.zip
+          echo "$PWD/xcodegen/bin" >> "$GITHUB_PATH"
+      - run: xcodegen --version
       - run: xcodegen generate
       - name: Compilar
         run: |
-          echo "::error::--- listado de Sources ---"
-          ls -R Sources | while IFS= read -r l; do echo "::error::$l"; done
-          echo "::error::--- xcodebuild -list ---"
-          xcodebuild -list -project Comidas.xcodeproj 2>&1 | while IFS= read -r l; do echo "::error::$l"; done
           set +e
           xcodebuild -project Comidas.xcodeproj -target Comidas \
             -sdk iphoneos -configuration Release \
@@ -23,7 +24,6 @@ jobs:
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO > build.log 2>&1
           code=$?
           if [ $code -ne 0 ]; then
-            echo "::error::--- salida $code, ultimas 30 lineas ---"
             tail -n 30 build.log | while IFS= read -r l; do echo "::error::$l"; done
             exit $code
           fi
