@@ -1,0 +1,24 @@
+name: build
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: xcodegen generate
+      - run: |
+          xcodebuild -project Comidas.xcodeproj -scheme Comidas \
+            -sdk iphoneos -configuration Release -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+      - run: |
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/Comidas.app Payload/
+          zip -qr Comidas.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Comidas-ipa
+          path: Comidas.ipa
