@@ -1,6 +1,7 @@
 name: Comidas
 options:
   bundleIdPrefix: com.comidaslog
+   objectVersion: 56
   deploymentTarget:
     iOS: '16.0'
   createIntermediateGroups: true
